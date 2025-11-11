@@ -1,17 +1,93 @@
-/* Reset básico */
+/* Reset COMPLETO y agresivo */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: 0;
+}
+
+/* ELIMINAR CUALQUIER BORDE BLANCO */
+html, body, #root {
+  background: #000000 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  outline: none !important;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0f0f0f;
+  background: #000000 !important;
   color: #ffffff;
   line-height: 1.6;
+  overflow-x: hidden;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-  min-height: 100vh;
+/* GARANTIZAR que no hay scrollbars blancos */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cc0000;
+}
+
+/* Enlaces globales */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Contenedor principal - SIN BORDES */
+main {
+  min-height: calc(100vh - 80px);
+  background: #000000 !important;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Contenedor de páginas */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 20px;
+  min-height: calc(100vh - 80px);
+  background: #000000 !important;
+}
+
+/* Mejoras de tipografía */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Focus visible */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #ff0000;
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 1.5rem 15px;
+  }
 }
