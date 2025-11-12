@@ -16,36 +16,16 @@ const HeroBanner = ({ comics }) => {
     setCurrentSlide(index);
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % comics.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + comics.length) % comics.length);
-  };
-
   return (
     <section className="hero-carousel">
-      <button className="carousel-btn carousel-btn--prev" onClick={prevSlide}>
-        ‹
-      </button>
-      
-      <button className="carousel-btn carousel-btn--next" onClick={nextSlide}>
-        ›
-      </button>
-
       <div className="carousel-slides">
         {comics.map((comic, index) => (
           <div
             key={comic.id}
             className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}
-            style={{ 
-              backgroundImage: `url(${comic.coverImage})`,
-              backgroundPosition: 'right center',
-              backgroundSize: 'cover'
-            }}
           >
-            <div className="slide-overlay">
+            {/* CONTENIDO A LA IZQUIERDA */}
+            <div className="slide-content-container">
               <div className="slide-content">
                 <h1 className="slide-title">{comic.title}</h1>
                 <p className="slide-synopsis">{comic.synopsis}</p>
@@ -64,36 +44,28 @@ const HeroBanner = ({ comics }) => {
                 </Link>
               </div>
             </div>
+
+            {/* IMAGEN A LA DERECHA */}
+            <div className="slide-image-container">
+              <img 
+                src={comic.coverImage} 
+                alt={comic.title}
+                className="slide-image"
+              />
+              {/* Efecto de difuminado opcional entre contenido e imagen */}
+              <div className="image-gradient"></div>
+            </div>
           </div>
         ))}
       </div>
 
-      {/* INDICADORES NUEVOS CON CLASE DIFERENTE */}
-      <div 
-        className="comics-dots"
-        style={{
-          position: 'absolute',
-          bottom: '30px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          gap: '15px',
-          zIndex: '10',
-        }}
-      >
+      {/* Puntos indicadores */}
+      <div className="carousel-indicators">
         {comics.map((_, index) => (
           <button
             key={index}
+            className={`indicator ${index === currentSlide ? 'active' : ''}`}
             onClick={() => goToSlide(index)}
-            style={{
-              width: '14px',
-              height: '14px',
-              borderRadius: '50%',
-              border: '2px solid rgba(255, 255, 255, 0.8)',
-              background: index === currentSlide ? '#ff0000' : 'transparent',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-            }}
           />
         ))}
       </div>

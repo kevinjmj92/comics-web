@@ -81,26 +81,19 @@ input:focus-visible {
   outline-offset: 2px;
 }
 
-/* ⚡ RESET NUCLEAR GLOBAL PARA INDICADORES ⚡ */
-.carousel-indicators, 
-.carousel-indicators *, 
-[class*="carousel-indicators"], 
-[class*="indicator"] {
-  all: unset !important;
+/* ⚠️ SOLUCIÓN DEFINITIVA PARA INDICADORES */
+.carousel-indicators {
   background: transparent !important;
-  backdrop-filter: none !important;
   background-color: transparent !important;
-  background-image: none !important;
   padding: 0 !important;
   margin: 0 !important;
   border: none !important;
-  box-shadow: none !important;
   border-radius: 0 !important;
-  outline: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
 }
 
-/* Reset específico para cualquier elemento que pueda tener fondo */
-.carousel-indicators {
+.carousel-indicators * {
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -108,9 +101,10 @@ input:focus-visible {
 .indicator {
   background: transparent !important;
   background-color: transparent !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
 }
 
-/* Reset para los nuevos dots */
-.comics-dots, .comics-dots * {
-  all: unset !important;
+.indicator.active {
+  background: #ff0000 !important;
+  background-color: #ff0000 !important;
 }
