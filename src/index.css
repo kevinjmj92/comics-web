@@ -1,35 +1,56 @@
-/* Reset COMPLETO y agresivo */
-* {
+/* RESET NUCLEAR - Elimina TODO espacio blanco */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   border: 0;
 }
 
-/* ELIMINAR CUALQUIER BORDE BLANCO */
-html, body, #root {
+/* Forzar negro absoluto en TODOS los elementos raíz */
+html {
   background: #000000 !important;
   margin: 0 !important;
   padding: 0 !important;
-  border: none !important;
-  outline: none !important;
-  min-height: 100vh;
   width: 100%;
+  height: 100%;
   overflow-x: hidden;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #000000 !important;
   color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
-  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* GARANTIZAR que no hay scrollbars blancos */
+/* El contenedor raíz de React */
+#root {
+  background: #000000 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Main container */
+main {
+  background: #000000 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+}
+
+/* Scrollbar personalizado */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -53,41 +74,9 @@ a {
   text-decoration: none;
 }
 
-/* Contenedor principal - SIN BORDES */
-main {
-  min-height: calc(100vh - 80px);
-  background: #000000 !important;
-  width: 100%;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-}
-
-/* Contenedor de páginas */
-.page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 20px;
-  min-height: calc(100vh - 80px);
-  background: #000000 !important;
-}
-
-/* Mejoras de tipografía */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-/* Focus visible */
+/* Focus visible para accesibilidad */
 button:focus-visible,
 input:focus-visible {
   outline: 2px solid #ff0000;
   outline-offset: 2px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .page-container {
-    padding: 1.5rem 15px;
-  }
 }

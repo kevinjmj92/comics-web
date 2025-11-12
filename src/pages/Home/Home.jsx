@@ -4,32 +4,39 @@ import { comicsData } from '../../data/comicsData';
 import './Home.css';
 
 const Home = () => {
-  // Filtrar cómics para diferentes secciones
-  const featuredComic = comicsData[0];
+  // Para el carousel, usamos los primeros 3-5 cómics populares
+  const featuredComics = comicsData.filter(comic => comic.isPopular).slice(0, 5);
   const newReleases = comicsData.filter(comic => comic.isNew);
   const popularComics = comicsData.filter(comic => comic.isPopular);
   const allComics = comicsData;
 
   return (
-    <div className="home-page">
-      <HeroBanner comic={featuredComic} />
+    <div 
+      className="home-page"
+      style={{
+        backgroundColor: '#000000',
+        margin: 0,
+        padding: 0,
+        width: '100%',
+        minHeight: '100vh'
+      }}
+    >
+      {/* Pasar múltiples cómics al HeroBanner carousel */}
+      <HeroBanner comics={featuredComics} />
       
       <div className="container">
-        {/* Nuevos Lanzamientos */}
         <ComicGrid 
           comics={newReleases} 
           title="Nuevos Lanzamientos"
           showViewAll={true}
         />
 
-        {/* Populares */}
         <ComicGrid 
           comics={popularComics} 
           title="Populares"
           showViewAll={true}
         />
 
-        {/* Todos los Cómics */}
         <ComicGrid 
           comics={allComics} 
           title="Todos los Cómics"
