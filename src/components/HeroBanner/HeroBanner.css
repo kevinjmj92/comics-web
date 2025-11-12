@@ -21,7 +21,7 @@
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: right center; /* Cambiado a right para enfocar derecha */
+  background-position: right center;
   background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
@@ -39,12 +39,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* Gradiente invertido - difuminado de derecha a izquierda */
   background: linear-gradient(
     90deg,
-    rgba(12, 12, 12, 0.95) 0%,
-    rgba(12, 12, 12, 0.8) 30%,
-    rgba(12, 12, 12, 0.3) 60%,
+    #000000 0%,
+    rgba(0, 0, 0, 0.95) 20%,
+    rgba(0, 0, 0, 0.8) 35%,
+    rgba(0, 0, 0, 0.5) 55%,
+    rgba(0, 0, 0, 0.2) 75%,
     transparent 100%
   );
   display: flex;
@@ -53,7 +54,7 @@
 }
 
 .slide-content {
-  max-width: 600px;
+  max-width: 500px;
   color: white;
   transform: translateX(-50px);
   opacity: 0;
@@ -164,12 +165,11 @@
   box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
 }
 
-/* Botones de navegación */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 0, 0, 0.7);
   border: none;
   color: white;
   font-size: 2rem;
@@ -178,7 +178,6 @@
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
   z-index: 10;
   display: flex;
   align-items: center;
@@ -186,7 +185,7 @@
 }
 
 .carousel-btn:hover {
-  background: rgba(255, 0, 0, 0.8);
+  background: rgba(255, 0, 0, 0.9);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -198,63 +197,40 @@
   right: 20px;
 }
 
-/* INDICADORES MEJORADOS - Sin burbuja gris */
+/* INDICADORES - MÉTODO NUCLEAR */
 .carousel-indicators {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 12px;
-  z-index: 10;
-  /* Eliminamos cualquier fondo */
-  background: none;
-  padding: 0;
-  border-radius: 0;
+  all: unset !important;
+  position: absolute !important;
+  bottom: 30px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  gap: 15px !important;
+  z-index: 10 !important;
 }
 
 .indicator {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  /* Eliminamos cualquier sombra o fondo */
-  box-shadow: none;
-  backdrop-filter: none;
+  all: unset !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  background: transparent !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: block !important;
 }
 
 .indicator.active {
-  background: #ff0000;
-  border-color: #ff0000;
-  transform: scale(1.2);
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  background: #ff0000 !important;
+  border-color: #ff0000 !important;
+  transform: scale(1.2) !important;
 }
 
 .indicator:hover {
-  background: #ff0000;
-  border-color: #ff0000;
-  transform: scale(1.1);
-}
-
-/* Efecto de imagen mejorado - más enfocado a la derecha */
-.carousel-slide::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 60%; /* Ajusta este valor para controlar el punto de difuminado */
-  background: linear-gradient(
-    to left,
-    transparent 0%,
-    rgba(12, 12, 12, 0.1) 30%,
-    rgba(12, 12, 12, 0.3) 60%,
-    rgba(12, 12, 12, 0.6) 100%
-  );
-  pointer-events: none;
+  background: #ff0000 !important;
+  border-color: #ff0000 !important;
+  transform: scale(1.1) !important;
 }
 
 /* Responsive */
@@ -262,7 +238,6 @@
   .hero-carousel {
     height: 60vh;
     min-height: 400px;
-    border-radius: 0 0 15px 15px;
   }
 
   .slide-title {
@@ -271,27 +246,11 @@
 
   .slide-synopsis {
     font-size: 1rem;
-    -webkit-line-clamp: 3;
-  }
-
-  .slide-meta {
-    gap: 0.5rem;
   }
 
   .slide-button {
     padding: 12px 25px;
     font-size: 1rem;
-  }
-
-  .slide-overlay {
-    background: linear-gradient(
-      90deg,
-      rgba(12, 12, 12, 0.95) 0%,
-      rgba(12, 12, 12, 0.9) 40%,
-      rgba(12, 12, 12, 0.5) 80%,
-      transparent 100%
-    );
-    padding: 0 1.5rem;
   }
 
   .carousel-btn {
@@ -308,9 +267,14 @@
     right: 10px;
   }
 
-  /* Ajuste para móviles - la imagen ocupa más espacio */
-  .carousel-slide::before {
-    left: 40%;
+  .carousel-indicators {
+    bottom: 25px !important;
+    gap: 12px !important;
+  }
+
+  .indicator {
+    width: 12px !important;
+    height: 12px !important;
   }
 }
 
@@ -320,47 +284,23 @@
     min-height: 350px;
   }
 
-  .slide-overlay {
-    padding: 0 1rem;
-  }
-
   .slide-title {
     font-size: 1.8rem;
   }
 
-  .slide-synopsis {
-    -webkit-line-clamp: 3;
-    font-size: 0.9rem;
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
   }
 
   .carousel-indicators {
-    bottom: 20px;
+    bottom: 20px !important;
+    gap: 10px !important;
   }
 
   .indicator {
-    width: 10px;
-    height: 10px;
-  }
-
-  /* En móviles, el contenido ocupa casi todo */
-  .carousel-slide::before {
-    left: 30%;
-  }
-}
-
-/* Efecto adicional para pantallas grandes */
-@media (min-width: 1200px) {
-  .carousel-slide {
-    background-position: right center;
-  }
-  
-  .slide-overlay {
-    background: linear-gradient(
-      90deg,
-      rgba(12, 12, 12, 0.98) 0%,
-      rgba(12, 12, 12, 0.85) 25%,
-      rgba(12, 12, 12, 0.4) 50%,
-      transparent 80%
-    );
+    width: 10px !important;
+    height: 10px !important;
   }
 }

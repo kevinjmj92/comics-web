@@ -80,3 +80,37 @@ input:focus-visible {
   outline: 2px solid #ff0000;
   outline-offset: 2px;
 }
+
+/* ⚡ RESET NUCLEAR GLOBAL PARA INDICADORES ⚡ */
+.carousel-indicators, 
+.carousel-indicators *, 
+[class*="carousel-indicators"], 
+[class*="indicator"] {
+  all: unset !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+}
+
+/* Reset específico para cualquier elemento que pueda tener fondo */
+.carousel-indicators {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.indicator {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Reset para los nuevos dots */
+.comics-dots, .comics-dots * {
+  all: unset !important;
+}

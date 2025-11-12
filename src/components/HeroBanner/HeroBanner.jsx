@@ -26,16 +26,14 @@ const HeroBanner = ({ comics }) => {
 
   return (
     <section className="hero-carousel">
-      {/* Botones de navegación */}
-      <button className="carousel-btn carousel-btn--prev" onClick={prevSlide} aria-label="Slide anterior">
+      <button className="carousel-btn carousel-btn--prev" onClick={prevSlide}>
         ‹
       </button>
       
-      <button className="carousel-btn carousel-btn--next" onClick={nextSlide} aria-label="Slide siguiente">
+      <button className="carousel-btn carousel-btn--next" onClick={nextSlide}>
         ›
       </button>
 
-      {/* Slides */}
       <div className="carousel-slides">
         {comics.map((comic, index) => (
           <div
@@ -43,8 +41,8 @@ const HeroBanner = ({ comics }) => {
             className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}
             style={{ 
               backgroundImage: `url(${comic.coverImage})`,
-              // Forzar que la imagen se posicione a la derecha
-              backgroundPosition: 'right center'
+              backgroundPosition: 'right center',
+              backgroundSize: 'cover'
             }}
           >
             <div className="slide-overlay">
@@ -70,14 +68,32 @@ const HeroBanner = ({ comics }) => {
         ))}
       </div>
 
-      {/* Indicadores - ahora sin fondo */}
-      <div className="carousel-indicators">
+      {/* INDICADORES NUEVOS CON CLASE DIFERENTE */}
+      <div 
+        className="comics-dots"
+        style={{
+          position: 'absolute',
+          bottom: '30px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          gap: '15px',
+          zIndex: '10',
+        }}
+      >
         {comics.map((_, index) => (
           <button
             key={index}
-            className={`indicator ${index === currentSlide ? 'active' : ''}`}
             onClick={() => goToSlide(index)}
-            aria-label={`Ir al slide ${index + 1}`}
+            style={{
+              width: '14px',
+              height: '14px',
+              borderRadius: '50%',
+              border: '2px solid rgba(255, 255, 255, 0.8)',
+              background: index === currentSlide ? '#ff0000' : 'transparent',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+            }}
           />
         ))}
       </div>
